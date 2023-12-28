@@ -65,7 +65,7 @@ for i in range(random.randint(1, len(listOfNumbersWithString))):
             listOfNumbersWithString[randomIndex] = "+" + listOfNumbersWithString[randomIndex]
 
     #if randomMode == 5: # times
-    #    randomDiv = random.randint(1,100)
+    #    randomDiv = round(random.uniform(1,100),3)
     #    listOfNumbersWithString[randomIndex] = "(" + str(randomDiv) + "*" + str(round(listOfNumbersWithString[randomIndex] / randomDiv,8)) + ")"
     #    if Minus == True:
     #        listOfNumbersWithString[randomIndex] = "-" + listOfNumbersWithString[randomIndex]
@@ -74,7 +74,7 @@ for i in range(random.randint(1, len(listOfNumbersWithString))):
         
 
     if randomMode == 5: # divide
-        randomTimes = random.randint(1,100)
+        randomTimes = round(random.uniform(1,100),3)
         listOfNumbersWithString[randomIndex] = "(" + str(round(listOfNumbersWithString[randomIndex] * randomTimes,8)) + "/" + str(randomTimes) + ")"
         if Minus == True:
             listOfNumbersWithString[randomIndex] = "-" + listOfNumbersWithString[randomIndex]
