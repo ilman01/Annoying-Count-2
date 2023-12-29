@@ -150,16 +150,16 @@ for v in listOfNumbers:
 
 
 
-outputStringCompl = ""
+outputStringComplete = ""
 
 for v in listOfNumbersWithString:
-    outputStringCompl = outputStringCompl + str(v)
+    outputStringComplete = outputStringComplete + str(v)
 
 
 
 # Gets rid of first plus
-if outputStringCompl[0] == "+":
-    outputStringCompl = outputStringCompl[1:]
+if outputStringComplete[0] == "+":
+    outputStringComplete = outputStringComplete[1:]
 
 
 
@@ -170,7 +170,31 @@ print(sympy.sympify(outputString1))
 print("\n")
 print(listOfNumbersWithString)
 print("\n")
-print(outputStringCompl)
-print(sympy.sympify(outputStringCompl))
+print(outputStringComplete)
+print(sympy.sympify(outputStringComplete))
+
 print("\n")
-print(outputStringCompl + "+" + str(target - sympy.sympify(outputStringCompl)))
+print("\n")
+
+print("With Compensation For Bot:")
+
+print("\n")
+print(outputStringComplete + "+" + str(target - sympy.sympify(outputStringComplete)))
+
+# Repeating above, but putting compensation randomly inside
+randomPlace = random.randint(1, len(listOfNumbersWithString) - 1)
+compensation = "+" + str(target - sympy.sympify(outputStringComplete))
+listOfNumbersWithString.insert(randomPlace, compensation)
+
+outputStringComplete = ""
+
+for v in listOfNumbersWithString:
+    outputStringComplete = outputStringComplete + str(v)
+
+
+# Gets rid of first plus (again lol)
+if outputStringComplete[0] == "+":
+    outputStringComplete = outputStringComplete[1:]
+
+print("\n")
+print(outputStringComplete)
