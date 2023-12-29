@@ -23,16 +23,16 @@ for i in range(length):
 
 listOfNumbersWithString = listOfNumbers.copy()
 
-for i in range(random.randint(1, len(listOfNumbersWithString))):
+for i in range(random.randint(len(listOfNumbersWithString) - 20, len(listOfNumbersWithString))):
     print("Executed" + str(i))
 
-    randomMode = random.randint(1,5)
+    randomMode = random.randint(1,6)
     randomIndex = random.randint(0, len(listOfNumbersWithString) - 1)
     Minus = False
 
-    if type(listOfNumbersWithString[randomIndex]) == str:
+    if type(listOfNumbersWithString[randomIndex]) == str: # If already converted, skip to the next iteration
         continue
-    if listOfNumbersWithString[randomIndex] < 0:
+    if listOfNumbersWithString[randomIndex] < 0: # If the number is a negative
         listOfNumbersWithString[randomIndex] = listOfNumbersWithString[randomIndex] * -1
         Minus = True
 
@@ -76,6 +76,24 @@ for i in range(random.randint(1, len(listOfNumbersWithString))):
     if randomMode == 5: # divide
         randomTimes = round(random.uniform(1,100),3)
         listOfNumbersWithString[randomIndex] = "(" + str(round(listOfNumbersWithString[randomIndex] * randomTimes,8)) + "/" + str(randomTimes) + ")"
+        if Minus == True:
+            listOfNumbersWithString[randomIndex] = "-" + listOfNumbersWithString[randomIndex]
+        else:
+            listOfNumbersWithString[randomIndex] = "+" + listOfNumbersWithString[randomIndex]
+    
+    if randomMode == 6: # modulo
+        targetVal = listOfNumbersWithString[randomIndex]
+
+        denominator = targetVal + 1
+
+        randomMultiplication = random.randint(5,8)
+        nominator = round(targetVal + denominator * randomMultiplication,4)
+
+        randomConfuseDenominator = round(random.uniform(1, denominator-1),2)
+        stringRandomConfuseDenominator = str(round(denominator - randomConfuseDenominator,2)) + "+" + str(randomConfuseDenominator)
+
+        listOfNumbersWithString[randomIndex] = f"({nominator}%({stringRandomConfuseDenominator}))"
+
         if Minus == True:
             listOfNumbersWithString[randomIndex] = "-" + listOfNumbersWithString[randomIndex]
         else:
