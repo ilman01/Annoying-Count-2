@@ -1,5 +1,4 @@
 import random
-import math
 import sympy
 
 def annoying_count(target, length):
@@ -22,8 +21,6 @@ def annoying_count(target, length):
     listOfNumbersWithString = listOfNumbers.copy()
 
     for i in range(random.randint(len(listOfNumbersWithString) - 20, len(listOfNumbersWithString))):
-        print("Executed" + str(i))
-
         randomMode = random.randint(1,6)
         randomIndex = random.randint(0, len(listOfNumbersWithString) - 1)
         Minus = False
@@ -161,24 +158,6 @@ def annoying_count(target, length):
 
 
 
-    print(listOfNumbers)
-    print("\n")
-    print(outputString1)
-    print(sympy.sympify(outputString1))
-    print("\n")
-    print(listOfNumbersWithString)
-    print("\n")
-    print(outputStringComplete)
-    print(sympy.sympify(outputStringComplete))
-
-    print("\n")
-    print("\n")
-
-    print("With Compensation For Bot:")
-
-    print("\n")
-    print(outputStringComplete + "+" + str(target - sympy.sympify(outputStringComplete)))
-
     # Repeating above, but putting compensation randomly inside
     randomPlace = random.randint(1, len(listOfNumbersWithString) - 1)
     compensation = "+" + str(target - sympy.sympify(outputStringComplete))
@@ -189,17 +168,15 @@ def annoying_count(target, length):
     for v in listOfNumbersWithString:
         outputStringComplete = outputStringComplete + str(v)
 
-
     # Gets rid of first plus (again lol)
     if outputStringComplete[0] == "+":
         outputStringComplete = outputStringComplete[1:]
 
-    print("\n")
-    print(outputStringComplete)
+    return outputStringComplete
 
 
+if __name__ == "__main__":
+    target = int(input("Input Number: "))
+    length = int(input("Input Length (Recommended: 40): "))
 
-target = int(input("Input Number: "))
-length = int(input("Input Length (Recommended: 40): "))
-
-annoying_count(target, length)
+    print(annoying_count(target, length))
